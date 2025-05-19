@@ -1,73 +1,49 @@
-# Welcome to your Feature Flag Management project
+# Pain Points
 
-## Project info
+- As a PM, when a new feature is being introduced, I am not fully sure on whether it works at scale.  
+- As a PM, when a new feature is being introduced, I want to fully confident that i won’t impact any other module present in the product.  
+- As a PM, I lack quantitative data to back multiple version of a feature implementation  
+- As a PM, a feature can be applicable to a particular region and won’t be applicable for every user.
 
-**URL**: https://example.com/feature-flag-management
+---
 
-## How can I edit this code?
+# Potential Solutions
 
-There are several ways of editing your application.
+- As a PM, I want to create targeted set of users using various user attributes so that I can release the feature to my intented audience
+- As a PM, I want to enable feature flag environment wise so that I can test it out in each environment and then move to the next environment 
+- As a PM, I want to roll out the feature in a progressive manner, so that if we encounter any bugs with scale we can control the blast radius 
+- As a PM, I want to view how my feature flags are being evaluated so that i can be confident that it's being triggered to external users
 
-**Use Feature Flag Management**
+---
 
-Simply visit the [Feature Flag Management Project](https://example.com/feature-flag-management) and start prompting.
+# Implementation Details
 
-Changes made via Feature Flag Management will be committed automatically to this repo.
+## Homepage
 
-**Use your preferred IDE**
+We’ll have a homepage which will introduce the users to the platform, which a quick overview of modules and then provide a CTA for start with their first action.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Feature Flag Management.
+## Sidebar
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+We’ll have a sidebar which will hold 3 main modules and provide a quick navigation for the users when they have to quick between modules
+- Segments  
+- Feature flags  
+- Insights
 
-Follow these steps:
+## Segments
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Segments will have two pages, the first one would be a listing page where we would have list of all segments that the user has created. Second would be a page where users can create a new segment. Users would be able to access the creation page from the listing page through a “Create New” button
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Feature Flags
 
-# Step 3: Install the necessary dependencies.
-npm i
+Feature flags will also have two pages. First one being a listing page, here users would be able to view all the feature flags that have been configured, along with their status for each of the configured environments. i.e. dev / staging / prod.  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+The second page would be an feature flag details page where users would be able to enable or disable the feature flag for a set of segment and also enable a progressive rollout strategy. Progressive roll out is an optional step.
 
-**Edit a file directly in GitHub**
+## Insights
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Insights would be a place for users to come to view how the feature flags have been evaluating. It would give them an high level overview of the usage of the platform which would include metrics such as 
+- Number of feature flags created  
+- Number of segments created  
+- Number of evaluations  
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Feature Flag Management](https://example.com/feature-flag-management) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Feature Flag Management project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://example.com/custom-domain-guide)
+It would also provide some insights on the features that haven’t been used for a while, this is to help users to prompt them to clear those to keep their codebases clean and tidy.
