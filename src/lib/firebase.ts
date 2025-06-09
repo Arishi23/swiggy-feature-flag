@@ -5,13 +5,13 @@ import { getAuth } from 'firebase/auth';
 // TODO: Replace this with your actual Firebase configuration from the Firebase Console
 // Go to Project Settings > General > Your Apps > Web App (</>)
 const firebaseConfig = {
-    apiKey: "AIzaSyBeISfmsBUDB8OIsfYiArWfHNxEC3i7F8s",
-    authDomain: "swiggy-feature-flag.firebaseapp.com",
-    projectId: "swiggy-feature-flag",
-    storageBucket: "swiggy-feature-flag.firebasestorage.app",
-    messagingSenderId: "741528030011",
-    appId: "1:741528030011:web:6e15e6c377008b4bd1451e",
-    measurementId: "G-HR2GRS58F9"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
