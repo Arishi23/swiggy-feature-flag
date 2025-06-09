@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,10 @@ import SegmentCreate from "./pages/SegmentCreate";
 import FeatureFlagsPage from "./pages/FeatureFlagsPage";
 import FeatureFlagDetail from "./pages/FeatureFlagDetail";
 import InsightsPage from "./pages/InsightsPage";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "./lib/AuthContext";
 
 const queryClient = new QueryClient();
 
@@ -21,17 +24,66 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout><Index /></Layout>} />
-          <Route path="/segments" element={<Layout><SegmentsPage /></Layout>} />
-          <Route path="/segments/create" element={<Layout><SegmentCreate /></Layout>} />
-          <Route path="/feature-flags" element={<Layout><FeatureFlagsPage /></Layout>} />
-          <Route path="/feature-flags/:id" element={<Layout><FeatureFlagDetail /></Layout>} />
-          <Route path="/insights" element={<Layout><InsightsPage /></Layout>} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* Public routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+
+            {/* Protected routes */}
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Layout><Index /></Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/segments"
+              element={
+                <ProtectedRoute>
+                  <Layout><SegmentsPage /></Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/segments/create"
+              element={
+                <ProtectedRoute>
+                  <Layout><SegmentCreate /></Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/feature-flags"
+              element={
+                <ProtectedRoute>
+                  <Layout><FeatureFlagsPage /></Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/feature-flags/:id"
+              element={
+                <ProtectedRoute>
+                  <Layout><FeatureFlagDetail /></Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/insights"
+              element={
+                <ProtectedRoute>
+                  <Layout><InsightsPage /></Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
